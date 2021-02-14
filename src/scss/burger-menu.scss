@@ -1,0 +1,204 @@
+// Прикрепляем навигацию
+/* .header{
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 50;
+} */
+
+
+.nav__logo{
+ flex: 0 0 60px;
+ border-radius: 50%;
+ overflow: hidden;
+ position: relative;
+ z-index: 9;
+}
+.nav__logo img{
+	max-width: 100%;
+	display: block;
+}
+
+// Делаем задний фон хедера, чтобы при открытии бургера оставался
+// логотип
+ .nav::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+/* 	background-color: grey; */
+	z-index: 10;
+}
+
+// Картинки и ссылки раскидываем по разным сторонам и их стилизируем
+//(так же задаем высоту наших ссылок)
+ .nav__body{
+ 	padding: 0 20px;
+ 	background-color: rgba( 0, 0, 0, .5 );
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	height: 80px;
+	align-items: center;
+}
+
+
+// вот тут нужно зед индекс поставить,а то списки пропадут
+
+.nav__list{
+	position: relative;
+	z-index: 11;
+	display: flex;
+
+	li{
+		margin: 0 0 0 20px;
+		a{
+			font-family: 'PT Sans', sans-serif;
+			color: white;
+			font-size: 20px;
+		}
+	}
+}
+
+// Изменения с классом active, тут просто обращаемся к псевдоэлементам
+//чтобы
+// при получении класса оно поворачивалолсь и спан переставал быть
+// видимым
+
+.nav__burger.active span{
+	display: none;
+}
+
+.nav__burger.active::before{
+	top: 9px;
+	transform:rotate(45deg);
+}
+
+.nav__burger.active::after{
+	bottom: 9px;
+	transform:rotate(-45deg);
+}
+
+
+// Само бургер меню
+
+.nav__burger{
+	display: none;
+}
+
+
+//Адаптация под телефоны и само бургер меню(так оно рисуется)
+
+@media (max-width: 767px) {
+	.nav__logo{
+		flex: 0 0 40px;
+	}
+
+	// убираем прокрутку body
+	body.lock{
+		overflow: hidden;
+	}
+	.nav__body{
+
+		height: 50px;
+	}
+	.nav__burger{
+		position: relative;
+		z-index: 11;
+		display: block;
+		position: relative;
+		height: 20px;
+		width: 30px;
+
+	span{
+		transition: all .3s ease;
+		background-color: white;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		top: 9px;
+	}
+	// Бефор верхняя полоса, афтер-нижняя, спан по середине
+	// объеденение их это общие стили
+
+
+		&::before,
+		&::after{
+			z-index: 11;
+			transition: all .3s ease;
+			content: '';
+			background-color: white;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			left: 0;
+		}
+
+		&::before{
+			top: 0;
+		}
+
+		&::after{
+			bottom: 0;
+		}
+	}
+// так будет выглядеть страница при открытии бургер меню, бгк 
+//просто разукрашиваем
+	.nav__menu{
+		z-index: 10;
+		//добавляем скрол в меню
+		overflow: auto;
+		//
+		transition: .3s all ease;
+		top: -150%;
+		position: fixed;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: url('../img/burger-menu/fon.jpg') no-repeat;
+		background-size: cover;
+		background-position: center;
+		// падингом вытаскиваем навигацию
+		padding: 70px 0 0 0;
+	}
+
+	.nav__burger.active{
+		top: 20px;
+		left: 0;
+		span{
+			background-color:black;
+		}
+
+		&::before{
+			background-color:black;
+		}
+
+		&::after{
+			background-color:black;
+		}
+	}
+
+	.nav__menu.active{
+		top: 0;
+	}
+	.nav__list{
+		flex-direction:column;
+		align-items: center;
+		//Отступы вниз
+		li{	
+			padding: 0 0 40px 0;
+			margin: 0 0 40px 0;
+			a{
+				font-size: 24px;
+			}
+		}
+	}
+
+	.menu__list{
+		padding-top: 200px;
+	}
+}

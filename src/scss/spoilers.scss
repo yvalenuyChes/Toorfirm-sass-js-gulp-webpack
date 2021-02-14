@@ -1,0 +1,57 @@
+
+.block{
+
+	&__item{
+		margin-bottom: 20px;
+	}
+
+	&__title{
+			cursor: pointer;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			position: relative;
+			padding: 0 0 0 30px;
+
+			.active{
+				
+			}
+			}
+	&__text{
+		display: none;
+		padding: 10px 0 0 0;
+	}
+}
+// при активвации стрелочка краснеет
+.block__title.active::before,
+.block__title.active::after{
+	background-color: red;
+}
+
+.block__title.active::before{
+	transform: rotate(-40deg);
+}
+
+.block__title.active::after{
+	transform: rotate(40deg);
+}
+
+.block__title::before,
+.block__title::after{
+	transition: all .3s ease;
+	content: '';
+	width: 10px;
+	height: 1px;background-color: black;
+	position: absolute;
+	top: 8px;
+}
+
+
+.block__title::before{
+	transform: rotate(40deg);
+	left: 0;
+}
+
+.block__title::after{
+	transform: rotate(-40deg);
+	left: 7px;
+}

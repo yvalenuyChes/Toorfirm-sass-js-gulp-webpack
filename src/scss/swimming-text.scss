@@ -1,0 +1,231 @@
+ .block-form{
+	padding: 20px;
+	width: 400px;
+
+
+
+	.tab-form{
+		padding: 30px 20px;
+		display: none;
+		&.active{
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+		}
+		input{
+			display: block;
+			width: 100%;
+		}
+	}
+
+	label.tab{
+		font-size: 25px;
+		cursor: pointer;
+		color:#000;
+		font-weight: 600px;
+		padding: 15px;
+		display: inline-block;
+		border-radius: 3px 3px 0 0;	
+		margin-bottom: -1px;
+
+		&.active{
+			background-color: white;
+			color: royalblue; 	
+		}
+	}
+}
+
+//инпуты
+
+.input{
+	font-size: 16px;
+	border: none;
+	border-bottom: 1px solid  royalblue;
+	padding: 12px 14px;
+	margin-bottom: 22px;
+	//цвет ввода
+	color: royalblue;
+	//снимаем обводку инпута
+	outline: none;
+}
+
+//стили кнопки
+.tab-button{
+	button{
+		border: none;
+		width: 100%;
+		background: #298cad;
+		color:white;
+		font-size: 18px;
+		text-transform: uppercase;
+		display: block;
+		text-align: center;
+		//можно и так расширать элемент снизу  сверху
+		line-height: 48px;
+		margin-top: 30px;
+		margin-bottom: 10px;
+	}
+}
+
+.tab-link{
+	transition: .5s ease;
+	margin-top: 40px;
+	display: block;
+	font-size: 12px;
+	text-align: center;
+	color:#000;
+
+	&:hover{
+		color: cornflowerblue;
+	}
+}
+
+
+.inputBox{
+	margin-top: 20px;
+	position: relative;
+	
+}
+
+.tab-labelText{
+	color: cornflowerblue;
+	transition: .3s;
+	position: absolute;
+	line-height: 50px;
+	font-size: 18px;
+}
+
+
+.focus .tab-labelText{
+	color: #000;
+	transform: translateY(-30px);
+	font-size: 14px;
+	
+}
+
+.input{
+	position: relative;
+	
+	
+	height: 50px;
+	
+	 background-color: rgba(142, 255, 242 , 0); 
+	font-size: 16px;
+	border: none;
+	outline: none;
+	border-bottom: 1px solid cornflowerblue;
+	padding: 12px 14px;
+	box-sizing: border-box;
+	margin-bottom: 22px;
+	color: cornflowerblue;
+	outline: none;
+}
+
+
+//checkbox
+
+ .recover{
+	width: 300px;
+	margin: 0 auto;
+
+	margin-top: 15px;
+	font-size: 12px;
+} 
+
+label[for="ckbox"]{
+	text-align: center;
+	padding: 0;
+	font-size: 16px;
+	cursor: pointer;
+	width: 300px;
+	display: block;
+	position: relative;
+	&::before{
+		content: '';
+		position: absolute;
+		border: 2px solid #c4c9c9;
+		width: 18px;
+		height: 18px;
+		top: 0;
+		left: 0;
+		border-radius: 3px;
+		transition: .2s;
+	}
+
+	a{
+			transition: .5s ease;
+			color: #000;
+
+			&:hover{
+				transition: .5s ease;
+				color: cornflowerblue;
+			}
+		}
+}
+
+#ckbox:checked + label::before{
+	border-top:	2px solid transparent;
+	border-left:2px solid transparent;
+	border-right:2px solid lime;
+	border-bottom:2px solid lime;
+	transform: rotate(40deg);
+	width: 12px;
+	height: 22px;
+	transform-origin: 100% 100%;
+	top: -4px;
+	left: -5px;
+}
+
+#ckbox:not(:checked),
+#ckbox:checked{
+	display: none;
+}
+
+@media (max-width: 450px) {
+	.block-form{
+		margin: 0 auto;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+
+		.tab{
+			text-align: center;
+			width: 100%;
+			padding: 0;
+		}
+
+		.tab-form{
+			padding: 0px 20px 20px 20px;
+		}
+
+		.tab-labelText{
+			width: 100%;
+			font-size: 16px;
+		}
+
+		.inputBox .focus{
+			.tab-labelText{
+				font-size: 13px;
+			}
+		}
+
+		.tab-button{
+			padding: 0px 0px 20px 0px;
+		}
+
+		.recover{
+			text-align: justify;
+			margin: 0 auto;
+			width: 100px;
+			height: 100px;
+
+			label[for="ckbox"]{
+				text-indent: 20px;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+
+	
+}

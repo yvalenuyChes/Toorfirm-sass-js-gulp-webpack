@@ -1,0 +1,177 @@
+
+.classOpacity{
+
+	opacity: 0;
+	transition: all .6s ease;
+}
+
+.classOpacity._active{
+	opacity: 1;
+	transition: all .6s ease;
+}
+
+// появление с задержкой (4 аргумент в анимации устанавливат задержку,можно использовать чтобы объекты вылазили друг за другом)
+// так же можно играться с появлением/исчезновением объекта через анимацию
+// и его высотой появления (translete делать в процентах меньше)
+.classNeed_1{
+	transform: translate(120%, 0px);
+	opacity: 0;
+	transition: all .3s ease 0s;
+}
+
+.classNeed_1._active{
+	transform: translate(0px, 0px);
+	opacity: 1;
+	transition: all .3s ease 0.8s;
+}
+
+.overflow{
+	overflow: hidden;
+}
+
+//появление слева
+
+.classLeft{
+	transform: translateX(5%);
+	opacity: 0;
+	transition: all .8s ease 0s;
+}
+
+.classLeft._active{
+	transform: translateX(0%);
+	opacity: 1;
+	transition: all .8s ease 0s;
+}
+
+//появление справа
+
+.classRight{
+	transform: translateX(-5%);
+	opacity: 0;
+	transition: all .8s ease 0s;
+}
+
+.classRight._active{
+	transform: translateX(0%);
+	opacity: 1;
+}
+
+//появление снизу
+
+.classBottom{
+	transform: translateY(20%);
+	opacity: 0;
+	transition: all .8s ease 0s;
+}
+
+.classBottom._active{
+	transform: translateX(0%);
+	opacity: 1;
+}
+
+
+// класс для повторяющихся объектов,чтобы каждому не прописывать одинаковые настройки
+
+.anim_show{
+	transform: translate(0px, 120%);
+	opacity: 0;
+}
+
+.anim_show._active,
+._active .anim_show{
+	transform: translate(0px, 0px);
+	opacity: 1;
+}
+
+//появление объекта через увеличение
+//лучше для кажого объекта добавлять эти классы,чтобы при скроле в адаптиве они
+// так же появлялись
+.classNeed_2{
+	transform: scale(0);
+	transition: all .3s ease 0s;
+}
+
+.classNeed_2._active{
+	transform: scale(1);
+}
+
+//поочередное появление
+//изначально нужно скрыть объекты
+//можно уехать ими влево(transform: translete(120%, 0px);)
+// и добавить transition чтобы они быстро скрывались
+
+.obj li{
+	display: none;
+	transform: translate(120%, 0px);
+}
+
+//когда объект получает класс _active
+
+.obj._active li{
+	transform: translate(0px, 0px);
+}
+
+// обращаемся к каждому объекту li через nth-child(n) и даем transition
+// с разной задержкой
+
+.obj._active li:nth-child(1){
+	transition: all .8s ease 0s;
+}
+
+.obj._active li:nth-child(2){
+	transition: all .8s ease 0.2s;
+}
+
+.obj._active li:nth-child(3){
+	transition: all .8s ease 0.4s;
+}
+
+.obj._active li:nth-child(4){
+	transition: all .8s ease 0.6s;
+}
+
+.obj._active li:nth-child(5){
+	transition: all .8s ease 0.8s;
+}
+
+// для scss
+
+.obj{
+	&_active{
+		li{
+			// если значение больше просто меняем последнюю цифру
+			@for $var from 1 to 6{
+				$delay: $var * 0.2;
+				&:nth-child(#{$var}){
+					@if $var==1{
+						transition: transform  0.8s ease 0s;
+					}@else{
+						transition: transform  0.8s ease 0s #{$delay + s};
+					}
+				}
+			}
+		}
+	}
+}
+
+ .bookAnim{
+ 	width: 100%;
+ 	height: 100%;
+	overflow: hidden;
+	transition: all .8s ease;
+	position: relative;
+	&__content{
+		opacity: 0;
+		transition: all .8s ease;
+		background-color: white;
+		transform: perspective(600px) translate(100%, 0%) rotateX(0deg) rotateY(-120deg);
+	}
+
+		&._active{
+			.bookAnim__content{
+				opacity: 1;
+				transition: all .8s ease;
+				transform: perspective(600px) translate(0px, 0%) rotateX(0deg) rotateY(0deg);
+			}
+	}
+} 

@@ -1,0 +1,134 @@
+
+.menu{
+	position: relative;
+	a{
+
+		.parent{
+			margin: 0 30px 0 0;
+		}
+	}
+
+	li{
+		position: relative;
+	}
+	&__list{
+		//если только для первого уровня нужно ставить птичку
+		>li{
+			margin: 0 40px 0 0;
+		}
+	}
+}
+
+.sub-menu{
+	&__list{
+		display: none;
+		position: absolute;
+		left: 50%;
+		top: 20px;	
+		padding: 10px 0 0 0;
+		background-color: rgba(255, 255, 255, .6);
+		border-radius: 0 0 10px 10px;
+		>li{
+			a{
+				color: black;
+			}
+		}
+
+	}
+	&__link{
+		min-width: 200px;
+		color: black;
+		display: inline-block;
+		padding: 5px 10px;
+	}
+}
+
+.menu__link{
+	position: relative;
+	color:aqua;
+}
+
+.sub-menu__listMain{
+	text-align: center;
+	padding: 0 20px;
+	left: -130%; 
+}
+
+.sub-menu__listSecondary{
+	text-align: center;
+	padding: 0 20px;
+	left: -70%; 
+}
+//стрелки под тач скрины
+
+.arrow{
+	display: none;
+	position: absolute;
+	right: -30px;
+	top: 5px;
+	width: 0;
+	height: 0;
+	border-top: 10px solid white;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+}
+
+.arrow.activeArrow{
+	transform:rotate(-180deg);
+
+}
+
+.mainLi{
+	position: relative;
+}
+
+.menu__arrow{}
+
+
+body.mouse{
+	.menu__list>li:hover .sub-menu__list{
+	display: block;
+	}
+
+	.sub-menu__list>li:hover .sub-sub-menu__list{
+	display: block;
+	}
+}
+
+body.touch{
+
+	.arrow{
+		display: block;
+	}
+
+	.sub-menu__list.openSub{
+		display: block;
+	}
+
+	.sub-sub-menu__list.openSub{
+		display: block;
+	}
+}
+
+@media (max-width: 767px) {
+	.sub-menu__list{
+		position: static;
+		li{
+			padding: 0;
+			margin: 0;
+		}
+	}
+
+	.sub-menu__link{
+		padding: 0 0 10px 0;
+	}
+
+	.sub-menu__listMain{
+	left: 0px;
+	}
+
+.sub-menu__listSecondary{
+	left: 0px;
+	}
+
+}

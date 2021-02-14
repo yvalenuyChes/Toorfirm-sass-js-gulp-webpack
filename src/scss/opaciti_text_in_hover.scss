@@ -1,0 +1,177 @@
+/* SCSS Миксин для шрифта */
+$maxWidth: 1280;
+@mixin adaptiv-font($pcSize, $mobSize) {
+ $addSize: $pcSize - $mobSize;
+ $maxWidth: $maxWidth - 320;
+ font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+//просто чтобы картинка была в центре документа, сам задай ей позицию
+
+
+.block-img{
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	// бэкграунд затемняет картинку
+	background-color: black;
+	img{
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		transition: .5s;
+	}
+//текст картинки
+	.block-text{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		display: flex;
+		justify-content: center;
+
+		.content__text{
+			position: relative;
+			flex-direction:column;
+			max-width: 500px;
+			display: flex;
+			text-align: center;
+			opacity: 0;
+			color: white;
+			font-size: calc(20px + 10 * ((100vw - 320px) / (1280 - 320)));
+
+		}
+
+		&:hover{
+			.content__text{
+				transition: .5s ease;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+
+.content__text-title{
+	font-size: calc(20px + 10 * ((100vw - 320px) / (1280 - 320)));
+	/* margin-bottom: 20px; */
+}
+
+.content__text-subtitle{
+	font-size: calc(12px + 5 * ((100vw - 320px) / (1280 - 320)));
+	text-align: justify;
+	padding: 0 20px;
+}
+
+.countrieDesk{
+	transition: .5s ease;
+	display: block;
+	opacity: 0;
+	position: absolute;
+	bottom: 10px;
+	right: 0;
+	border: none;
+		width: 250px;
+		background: #298cad;
+		color:white;
+		font-size: calc(12px + 5 * ((100vw - 320px) / (1280 - 320)));
+		text-transform: uppercase;
+		display: block;
+		text-align: center;
+		//можно и так расширать элемент снизу  сверху
+		line-height: 48px;
+
+		a{
+			color:white;
+		}
+}
+
+//переделай тут всё под один класс
+.content__niderland:hover  .img-countries{
+	transform: scale(1.2);
+	filter:blur(1px);
+	opacity: .5;
+}  
+
+.content__mald:hover  .wrapper-img:hover .block-img img{
+	transform: scale(1.2);
+	filter:blur(1px);
+	opacity: .5;
+}
+
+.content__vengr:hover  .wrapper-img:hover .block-img img{
+	transform: scale(1.2);
+	filter:blur(1px);
+	opacity: .5;
+}
+
+.content__mram:hover  .wrapper-img:hover .block-img img{
+	transform: scale(1.2);
+	filter:blur(1px);
+	opacity: .5;
+}
+
+.content__NY:hover  .wrapper-img:hover .block-img img{
+	transform: scale(1.2);
+	filter:blur(1px);
+	opacity: .5;
+}
+
+.content__kanada:hover  .wrapper-img:hover .block-img img{
+	transform: scale(1.2);
+	filter:blur(1px);
+	opacity: .5;
+}
+
+
+//вот тут названия стран
+
+
+.content__title{
+	font-family: 'Caveat', cursive;
+	font-size: calc(40px + 15 * ((100vw - 320px) / (1280 - 320)));
+	transition: .5s ease;
+	position: absolute;
+	top: 20px;
+	color:white;
+	left: 10%;
+	opacity: 1;
+}
+
+.wrapper-img:hover .content__title{
+	transition: .5s ease;
+	opacity: 0;	
+}
+
+.wrapper-img:hover .countrieDesk{
+	transition: .5s ease;
+	opacity: 1;
+}
+
+.wrapper-img{
+	margin: 20px;
+}
+
+
+@media (max-width: 767px) {
+	.content__title{
+		margin-bottom: -40px;
+	}
+	.content__text{
+	padding: 0;
+	margin-bottom: 0px;
+	}
+
+	.countrieDeskOther{
+		left: 12.5%;
+	}
+
+	.countrieDesk{
+		width: 150px;
+		line-height: 24px;
+	}
+}
+
