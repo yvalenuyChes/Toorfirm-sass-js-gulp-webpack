@@ -43,13 +43,10 @@
 	border-bottom: 1px solid  royalblue;
 	padding: 12px 14px;
 	margin-bottom: 22px;
-	//цвет ввода
 	color: royalblue;
-	//снимаем обводку инпута
 	outline: none;
 }
 
-//стили кнопки
 .tab-button{
 	button{
 		border: none;
@@ -60,7 +57,6 @@
 		text-transform: uppercase;
 		display: block;
 		text-align: center;
-		//можно и так расширать элемент снизу  сверху
 		line-height: 48px;
 		margin-top: 30px;
 		margin-bottom: 10px;

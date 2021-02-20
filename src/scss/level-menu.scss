@@ -12,7 +12,6 @@
 		position: relative;
 	}
 	&__list{
-		//если только для первого уровня нужно ставить птичку
 		>li{
 			margin: 0 40px 0 0;
 		}
@@ -59,7 +58,6 @@
 	padding: 0 20px;
 	left: -70%; 
 }
-//стрелки под тач скрины
 
 .arrow{
 	display: none;

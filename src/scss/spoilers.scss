@@ -21,7 +21,6 @@
 		padding: 10px 0 0 0;
 	}
 }
-// при активвации стрелочка краснеет
 .block__title.active::before,
 .block__title.active::after{
 	background-color: red;

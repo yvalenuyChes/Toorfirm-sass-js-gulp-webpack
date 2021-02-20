@@ -1,11 +1,3 @@
-// Прикрепляем навигацию
-/* .header{
-	position: fixed;
-	width: 100%;
-	top: 0;
-	left: 0;
-	z-index: 50;
-} */
 
 .nav__logo{
  flex: 0 0 60px;
@@ -19,8 +11,6 @@
 	display: block;
 }
 
-// Делаем задний фон хедера, чтобы при открытии бургера оставался
-// логотип
  .nav::before{
 	content: '';
 	position: absolute;
@@ -28,12 +18,9 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-/* 	background-color: grey; */
 	z-index: 10;
 }
 
-// Картинки и ссылки раскидываем по разным сторонам и их стилизируем
-//(так же задаем высоту наших ссылок)
  .nav__body{
  	padding: 0 20px;
  	background-color: rgba( 0, 0, 0, .5 );
@@ -44,8 +31,6 @@
 	align-items: center;
 }
 
-
-// вот тут нужно зед индекс поставить,а то списки пропадут
 
 .nav__list{
 	position: relative;
@@ -62,10 +47,6 @@
 	}
 }
 
-// Изменения с классом active, тут просто обращаемся к псевдоэлементам
-//чтобы
-// при получении класса оно поворачивалолсь и спан переставал быть
-// видимым
 
 .nav__burger.active span{
 	display: none;
@@ -82,21 +63,16 @@
 }
 
 
-// Само бургер меню
-
 .nav__burger{
 	display: none;
 }
 
-
-//Адаптация под телефоны и само бургер меню(так оно рисуется)
 
 @media (max-width: 767px) {
 	.nav__logo{
 		flex: 0 0 40px;
 	}
 
-	// убираем прокрутку body
 	body.lock{
 		overflow: hidden;
 	}
@@ -121,8 +97,6 @@
 		left: 0;
 		top: 9px;
 	}
-	// Бефор верхняя полоса, афтер-нижняя, спан по середине
-	// объеденение их это общие стили
 
 
 		&::before,
@@ -145,13 +119,9 @@
 			bottom: 0;
 		}
 	}
-// так будет выглядеть страница при открытии бургер меню, бгк 
-//просто разукрашиваем
 	.nav__menu{
 		z-index: 10;
-		//добавляем скрол в меню
 		overflow: auto;
-		//
 		transition: .3s all ease;
 		top: -110%;
 		position: fixed;
@@ -161,7 +131,6 @@
 		background: url('../img/burger-menu/fon.jpg') no-repeat;
 		background-size: cover;
 		background-position: center;
-		// падингом вытаскиваем навигацию
 		padding: 70px 0 0 0;
 	}
 
@@ -187,7 +156,6 @@
 	.nav__list{
 		flex-direction:column;
 		align-items: center;
-		//Отступы вниз
 		li{	
 			padding: 0 0 40px 0;
 			margin: 0 0 40px 0;

@@ -8,20 +8,15 @@ $(document).ready(function () {
    })
 })
 
-//button_top_script
 
 
-//индикатор для заливки
-//если скролится больше 100, кнопка показывается,если меньше,прячется
 const offset = 100;
 
-//обертка
 
 const scrollUp = document.querySelector('.scroll_up');
 
 const scrollUpSvgPath = document.querySelector('.scroll_up__path');
 
-//длинна path
 
 const pathLength = scrollUpSvgPath.getTotalLength();
 
@@ -156,49 +151,35 @@ function myFunction() {
    }
 }
 
-//вызываем
 myFunction();
 
-//ну и при ресайзе перепроверяем
 $(window).resize(function () {
    myFunction();
 });
 
-//modal-window
-
-//получаем все ссылки на popup в документе,чтобы popup открывался при клике на любой объект с классом popup-link
 const popupLinks = document.querySelectorAll('.popup-link');
 
-// получаем тег body чтобы его блокировать скрол тела
 const body = document.querySelector('body');
 
 const lockPadding = document.querySelectorAll(".lock-padding");
 
-// эта переменная нужна чтобы не было двойных нажатий
 let unlock = true;
 
-// нужна для блокировки скрола и его адекватной работе
-// она должна быть равной анимации в css
 const timeout = 800;
 
-//проверка,существуют ли popup ссылки,в цикле отлавливаем их
-// и вешаем событие click
 
 if (popupLinks.length > 0) {
    for (let index = 0; index < popupLinks.length; index++) {
       const popupLink = popupLinks[index];
       popupLink.addEventListener("click", function (e) {
-         // убираем значок хеша из хреф
          const popupName = popupLink.getAttribute('href').replace('#', '');
          const curentPopup = document.getElementById(popupName);
          popupOpen(curentPopup);
-         //этой функцией мы не перезагружаем страницу
          e.preventDefault();
       });
    }
 }
 
-//функция закрывающая popup по классу
 
 const popupCloseIcon = document.querySelectorAll('.close-popup');
 if (popupCloseIcon.length > 0) {
@@ -214,17 +195,13 @@ if (popupCloseIcon.length > 0) {
 //функция открытия popup
 
 function popupOpen(curentPopup) {
-   //проверяем,есть ли такой объект и открыта ли переменная unlock
    if (curentPopup && unlock) {
-      //функция которая автоматически закрывает выбранный попап 
-      // и открывает новый по ссылке
       const popupActive = document.querySelector('.popup.open');
       if (popupActive) {
          popupClose(popupActive, false);
       } else {
          bodyLock();
       }
-      // к  popup добавляем класс open
       curentPopup.classList.add('open');
       curentPopup.addEventListener("click", function (e) {
          //проверка если нет контента,popup закрывается
@@ -237,8 +214,6 @@ function popupOpen(curentPopup) {
 }
 
 function bodyLock() {
-   // разница между шириной просматриваемого контента и шириной объекта который находится внутри него
-   // чтобы получить ширину скрола,который нужно скрыть
    const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
    //проверка
    if (lockPadding.length > 0) {
@@ -248,19 +223,13 @@ function bodyLock() {
       }
    }
    body.style.paddingRight = lockPaddingValue;
-   //класс lock убирает и добавляет скрол
-   // в css допиши body.lock{overflow:hidden;}
    body.classList.add("lock");
-   // этот замок нужен чтобы нельзя было попап открыть сразу при закрытии
-   // чтобы не появлялся скрол
    unlock = false;
    setTimeout(function () {
       unlock = true;
    }, timeout);
 }
 
-// в этой функции таймауты нужны чтобы не дергался popup,
-//чтобы скрол появлялся только тогда,когда закончится анимация
 function bodyUnlock() {
    setTimeout(function () {
       if (lockPadding.length > 0) {
@@ -279,8 +248,6 @@ function bodyUnlock() {
    }, timeout);
 }
 
-//функция,закрывающаяя popup окно
-//она позволяет еще открывать popupы
 function popupClose(popupActive, doUnlock = true) {
    if (unlock) {
       //убираем у активного попапа класс open
@@ -292,7 +259,6 @@ function popupClose(popupActive, doUnlock = true) {
    }
 }
 
-//закрытие popup по кнопке,в данном случае по esc
 
 document.addEventListener('keydown', function (e) {
    if (e.which === 27) {
@@ -319,7 +285,6 @@ popup_checkLink.addEventListener("click", function () {
 })
 
 
-//slick-slider.js
 
 var multiItemSlider = (function () {
    return function (selector, config) {
@@ -386,20 +351,18 @@ var multiItemSlider = (function () {
       };
 
       var _setUpListeners = function () {
-         // добавление к кнопкам "назад" и "вперед" обрботчика _controlClick для событя click
          _sliderControls.forEach(function (item) {
             item.addEventListener('click', _controlClick);
          });
       }
 
-      // инициализация
       _setUpListeners();
 
       return {
-         right: function () { // метод right
+         right: function () {
             _transformItem('right');
          },
-         left: function () { // метод left
+         left: function () {
             _transformItem('left');
          }
       }
@@ -451,82 +414,47 @@ if (isMobile.any()) {
 }
 
 
-//scroll
-
-
-// просто добавляй класс animItems для анимации блоков
-
-//выбираем все блоки с классом aninItems
-
 const animItems = document.querySelectorAll('._animItems')
 
-// проверяем, есть ли на странице элементы с классом aninItems
 
 if (animItems.length > 0) {
-   // событие, при котором функция будет выполнятся
    window.addEventListener('scroll', animOnScroll);
-   //сама функция
    function animOnScroll() {
-      //перебираем страницу и получаем каждый из элементов массива
       for (let index = 0; index < animItems.length; index++) {
          const animItem = animItems[index];
-         //определяем высоту блока
          const animItemHeight = animItem.offsetHeight;
-         // получаем позицию объекта относительно верха
          const animItemOffSet = offset(animItem).top;
-         //коофициент,который будет регулировать момент старта анимации
-         // при достижении 1/4 его высоты или высоты окна браузера будет срабатывать функция
-         // можно менять,когда именно она сработает
          const animStart = 4;
 
 
-         // настройка момента старта анимации
          let animItemPoint = window.innerHeight - animItemHeight / animStart;
 
-         // настройка для случаев, если объект выше окна браузера
-         // перестройка 
          if (animItemHeight > window.innerHeight) {
             animItemPoint = window.innerHeight - window.innerHeight / animStart;
          }
-         // добавление и удаление класса active, удаление происходит 
-         // для того,чтобы сделать повторную анимацию 
          if ((pageYOffset > animItemOffSet - animItemPoint) && pageYOffset < (animItemOffSet + animItemHeight)) {
             animItem.classList.add('_active');
          } else {
-            // условие чтобы анимация при скроле вверх не повторялась
-            // но нужен класс anim_hide
             if (!animItem.classList.contains('.anim_hide')) {
                animItem.classList.remove('_active');
             }
          }
       }
    }
-   // функция для получения информации для animItemsOffSet
    function offset(el) {
       const rect = el.getBoundingClientRect(),
          scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
          scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
    }
-   // для объектов,которые сразу находятся  видимой части,чтобы анимация происходила
-   // сразу,а не при скроле
-   //animOnScroll();
-   //если нужна задержка перед анимацией вначале
 
    setTimeout(() => {
       animOnScroll();
-      //ниже можем регулировать на сколько будет задержка
    }, 300)
 
 }
 
-//чтобы анимировался объект внутри объекта нужно его обернуть в div, 
-//divу задать класс animItems, а объекту внутри него - anim_show,
-//и тогда объект который в этом dive находится будет иметь анимацию 
-//появления. так же объекту внутри нужно задать overflow: hidden; для
-//нормального появления
 
-//closeBurgerByClick
 
 let closeMenu1 = document.getElementById('closeNavLink1');
 let closeMenu2 = document.getElementById('closeNavLink2');
@@ -572,7 +500,6 @@ closeMenu4.addEventListener("click", function () {
 
 
 
-//swimming-text
 
 $(".block-form").on("click", ".tab", function () {
    // удаляем классы active

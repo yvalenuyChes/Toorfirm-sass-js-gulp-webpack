@@ -1,6 +1,5 @@
 
 .popup{
-	//задаем фиксированное окно на всю широту и высоту экрана
 	position: fixed;
 	color:white;
 	width: 100%;
@@ -8,17 +7,13 @@
 	background-color: rgba(0, 0 ,0 , 0.8);
 	top: 0;
 	left: 0;
-	// скрываем попап окно
 	opacity: 0;
 	visibility: hidden;
-	// для скрола
 	overflow-y: auto;
 	overflow-x: hidden;
-	//анимация плавного появления
 	transition: all 0.8s ease 0s;
 }
 
-//подключаем открытие попап через js
 .popup.open{
 	opacity: 1;
 	visibility:visible;
@@ -26,7 +21,6 @@
 
 
 .popup__body{
-	// делаем на весь экран и центрируем всё внутри блока
 	min-height: 100%;
 	display: flex;
 	align-items: center;
@@ -34,23 +28,17 @@
 	padding: 30px 10px;
 }
 
-// окно,которое видит пользователь
 .popup__content{
 	position: relative;
 	background-color: white;
 	color: black;
-	// размер окна
 	max-width: 800px;
-	//внутренние отступы
 	padding: 30px;
-	//анимация появления внутри popup
 	transition: all 0.8s ease 0s;
 	opacity: 0;
-	// улучшенная анимация
 	transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
 }
 
-// при открытии возвращаем ему начальные параметры
 .popup.open .popup__content{
 	opacity: 1;
 	transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
@@ -70,7 +58,6 @@ opacity: 1;
 }
 .popup__close:before, .popup__close:after {
 position: absolute;
-/* left: 15px; */
 content: ' ';
 height: 20px;
 width: 2px;
@@ -82,17 +69,11 @@ transform: rotate(45deg);
 .popup__close:after {
 transform: rotate(-45deg);
 }
-// конец крестика
-
-// заголовок окна
 .popup__title{
 	text-align: center;
 	font-size: 40px;
-	/* margin: 0 0 40px 0; */
 }
 
-// текст окна
-.popup__text{}
 
 body.lock{
 	overflow: hidden;

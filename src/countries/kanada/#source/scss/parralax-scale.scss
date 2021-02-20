@@ -2,7 +2,6 @@ body{
 	 overflow-x: hidden; /* Hide scrollbars */
 }
 
-// общий стиль для страницы
 .page{
 	position: absolute;
 	width: 100%;
@@ -16,7 +15,6 @@ body{
 
 	}
 }
-// общие стили гор
 .paralax__montain{
 	position: fixed;
 	width: 100%;
@@ -25,15 +23,12 @@ body{
 	left: 0;
 
 }
-// модификаторы
-// тут нужно менять размеры оберток для нужного отображения
 .paralax__montain_1{
 	 background: url('../img/m_1.png') 0 0 / cover no-repeat; 
 } 
 
 .paralax__montain_2{
 	 z-index: 1;
-	 // 45% это размер картинки, 0 0 это позиция обертки
 	 background: url('../img/m_2.png') bottom right / 45% no-repeat; 
 }
 

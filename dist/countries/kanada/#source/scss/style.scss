@@ -1,7 +1,6 @@
 @import 'nullstyle.scss';
 @import 'parralax-scale.scss';
 @import '3d-card.scss';
-// font-size: calc(24px + 16 * ((100vw - 320px) / (1280 - 320)));
 body{
 	font-family: 'Roboto', sans-serif;
 		color: black;
@@ -102,9 +101,6 @@ body{
 	display: -o-flex;
 	display: flex;
 	border: 1px solid gray;
-	/*
-	padding: 20px;
-	*/
 }
 
 .img-box {
